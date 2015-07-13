@@ -1,0 +1,85 @@
+author = "1st Missionsbauer";
+onLoadName = "OP TODO";
+onLoadMission = "Together we stand, divided we fall.";
+
+class Header
+{
+	gameType = Coop;
+	minPlayers = 1;
+	maxPlayers = 99;
+};
+
+//respawn = 3;
+respawnDelay = 3;
+respawnOnStart = 0;
+//respawnDialog = 0;
+disabledAI = 1;
+//showMap = 0;
+enableDebugConsole = 1;
+disableChannels[] = {0,1,2,4,6};
+
+briefing = 0;
+class CfgFunctions
+{
+	class CODI
+	{
+		class Template
+		{
+			class skipBriefing
+			{
+				preInit = 1;
+				file = "skipBriefing.sqf";
+			};
+		};
+	};
+};
+#include "CODI\Dialogs.hpp"
+#include "CODI\Loadout\Dialogs.hpp"
+#include "CSSA3\CSSA3_header.hpp"
+//#include "pxs_satcom_a3\init_interface.hpp"
+
+class CfgSounds
+{
+	class trin_dispStart
+	{
+		name = "Trin Display Start";
+		sound[] = {"scripts\trindisplay\sounds\dispStart.ogg", 1, 1};
+		titles[] = {};
+	};
+	class trin_dispExit
+	{
+		name = "Trin Display Exit";
+		sound[] = {"scripts\trindisplay\sounds\dispExit.ogg", 1, 1};
+		titles[] = {};
+	};
+	class trin_dispWarn
+	{
+		name = "Trin Display Warn";
+		sound[] = {"scripts\trindisplay\sounds\dispWarn.ogg", 0.5, 1};
+		titles[] = {};
+	};
+	class trin_dispCount
+	{
+		name = "Trin Display Count";
+		sound[] = {"scripts\trindisplay\sounds\dispCount.ogg", 2, 1};
+		titles[] = {};
+	};
+	class trin_dispClear
+	{
+		name = "Trin Display Clear";
+		sound[] = {"scripts\trindisplay\sounds\dispClear.ogg", 1, 1};
+		titles[] = {};
+	};
+	class trin_dispSilence
+	{
+		name = "Trin Display Silence";
+		sound[] = {"scripts\trindisplay\sounds\dispSilence.ogg", 1, 1};
+		titles[] = {};
+	};
+};
+
+#include "scripts\trindisplay\dialog\define.hpp"
+class RscTitles
+{
+	#include "scripts\trindisplay\dialog\trin_display.hpp"
+};

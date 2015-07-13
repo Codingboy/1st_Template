@@ -1,0 +1,10 @@
+private["_side","_class","_visual","_silenced","_medic","_exSpec","_pilot"];
+_side = lbText[2100, lbCurSel 2100];
+_class = lbText[2101, lbCurSel 2101];
+_visual = lbText[2102, lbCurSel 2102];
+_silenced = cbChecked (CODI_Loadout_ClassSelector displayCtrl 2800);
+_medic = cbChecked (CODI_Loadout_ClassSelector displayCtrl 2801);
+_exSpec = cbChecked (CODI_Loadout_ClassSelector displayCtrl 2802);
+_pilot = cbChecked (CODI_Loadout_ClassSelector displayCtrl 2803);
+closeDialog 0;
+[player, _class, _visual, _side, !_silenced, _silenced, _medic, _exSpec, _pilot] call CODI_Loadout_fnc_loadouts;
