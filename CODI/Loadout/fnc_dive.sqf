@@ -1,3 +1,11 @@
+/**
+Equips a unit with diveequipment. Reequips the unit with its original loadout if vest is dropped.
+@param _units: unit that shall be equipped with a diveequipment
+@note may be executed on server or client but for easiest use, call it on client.
+@example:
+[player] execVM "CODI\Loadout\fnc_dive.sqf";
+[player] spawn CODI_Loadout_fnc_dive;
+*/
 private["_backpack","_items","_unit","_goggles"];
 
 _unit = _this select 0;

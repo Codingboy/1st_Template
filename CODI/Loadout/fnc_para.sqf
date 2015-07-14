@@ -1,3 +1,11 @@
+/**
+Equips a unit with a parachute. Reequips the unit with its backpack if parachute is used or parachute is dropped.
+@param _units: unit that shall be equipped with a parachute
+@note may be executed on server or client but for easiest use, call it on client.
+@example:
+[player] execVM "CODI\Loadout\fnc_para.sqf";
+[player] spawn CODI_Loadout_fnc_para;
+*/
 private["_backpack","_items","_unit"];
 
 _unit = _this select 0;

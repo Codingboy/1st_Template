@@ -1,3 +1,19 @@
+/**
+Equips a unit with a loadout.
+@param _unit: unit that should be equipped
+@param _visual: camoflage used for unit (only necessary for blufor:flecktarn,tropentarn)
+@param _class(string): class of the unit, defines loadout
+@param _side: side of the unit
+@param _forceUnsilenced: true to remove all silencers from the unit
+@param _forceSilenced: true to add silencers to the unit
+@param _isMedic: true to add medic capabillities to the unit
+@param _isExSpec: true to add exspec capabillities to the unit
+@param _isPilot: true to add pilot capabillities to the unit
+@note execute on client
+@example:
+[player,"Medic","",side player,false,true,true,false,false] spawn CODI_Loadout_fnc_loadouts;
+[player,typeOf player,"flecktarn",blufor,false,false,false,false,false] spawn CODI_Loadout_fnc_loadouts;
+*/
 private["_exit","_forceUnsilenced","_forceSilenced","_pistolOptic","_pistolSilencer","_pistolLaser","_silenced","_iUniformItems","_oUniformItems","_bUniformItems","_iVestItems","_oVestItems","_bVestItems","_iBackpackItems","_oBackpackItems","_bBackpackItems","_radioConfig","_bBinocular","_oBinocular","_iBinocular","_bipod","_bBipod","_oBipod","_iBipod","_side","_bGps","_oGps","_iGps","_unit","_class","_visual","_uniform","_bUniform","_oUniform","_iUniform","_vest","_bVest","_oVest","_iVest","_backpack","_bBackpack","_oBackpack","_iBackpack","_goggles","_bGoggles","_oGoggles","_iGoggles","_helmet","_bHelmet","_oHelmet","_iHelmet","_weapon","_bWeapon","_oWeapon","_iWeapon","_weaponAmmo","_bWeaponAmmo","_oWeaponAmmo","_iWeaponAmmo","_weaponAttachements","_pistol","_bPistol","_oPistol","_iPistol","_pistolAmmo","_bPistolAmmo","_oPistolAmmo","_iPistolAmmo","_pistolAttachements","_launcher","_bLauncher","_oLauncher","_iLauncher","_launcherAmmo","_bLauncherAmmo","_oLauncherAmmo","_iLauncherAmmo","_binocular","_binocularAmmo","_uniformItems","_vestItems","_backpackItems","_linkedItems","_insignia","_uniformAmmo","_bUniformAmmo","_oUniformAmmo","_iUniformAmmo","_vestAmmo","_bVestAmmo","_oVestAmmo","_iVestAmmo","_backpackAmmo","_bBackpackAmmo","_oBackpackAmmo","_iBackpackAmmo","_silencer","_bSilencer","_oSilencer","_iSilencer","_laser","_bLaser","_oLaser","_iLaser","_optic","_bOptic","_oOptic","_iOptic","_watch","_map","_compass","_radio","_bRadio","_oRadio","_iRadio","_gps","_nv","_bNv","_oNv","_iNv"];
 
 //if (!isClass (configFile >> "CfgPatches" >> "BWA3_Units")) exitWith {};
