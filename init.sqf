@@ -13,3 +13,23 @@ call compile preprocessFileLineNumbers "CODI\missionGenerator\init.sqf";
 
 getGasTot = compile preprocessFileLineNumbers "scripts\trindisplay\functions\trin_fn_gasCalc.sqf";
 getTisTot = compile preprocessFileLineNumbers "scripts\trindisplay\functions\trin_fn_initTissues.sqf";
+
+//Nachschub über Rauchgranaten und addAction für die Missionen
+if (hasInterface AND ((typeOf player) == "first_Squadleader" OR (typeOf player) == "first_Teamleader")) then {
+	player addEventHandler ["Fired", {_this execVM "commander\supply_drop.sqf"}];
+	};
+
+if (isServer) then {
+ supply_explosives = 0;
+ supply_medical = 0;
+ supply_ammo = 0;
+ max_supply_explosives = 2;
+ max_supply_medical = 4;
+ max_supply_ammo = 4;
+ publicVariable "supply_explosives";
+ publicVariable "supply_medical";
+ publicVariable "supply_ammo";
+ publicVariable "max_supply_explosives";
+ publicVariable "max_supply_medical";
+ publicVariable "max_supply_ammo";
+ }; 
