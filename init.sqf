@@ -33,3 +33,7 @@ if (isServer) then {
  publicVariable "max_supply_medical";
  publicVariable "max_supply_ammo";
  }; 
+ 
+ //ViewDistance fest einstellen. Wert bei Bedarf anpassen
+ Com_ViewDistance = 1500;
+ if (hasInterface) then {[Com_ViewDistance]execVM "kai\viewDistance.sqf";};
