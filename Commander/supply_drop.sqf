@@ -28,18 +28,22 @@ _heli = createVehicle ["RHS_UH1Y_d", getMarkerPos "helim", [], 0, "FLY"];
 _group = createGroup east;
 _pilot = _group createUnit ["rhs_msv_driver", getMarkerPos "helim", [], 0, "FORM"];
 _pilot moveInDriver _heli;
-
+_pilot allowFleeing 0;
 sleep 5;
 _wp = (group _heli) addWaypoint [getPos _projectile, 0]; 
-_wp = [group _heli, 0] setWaypointCombatMode "BLUE";
+//_wp = [group _heli, 0] setWaypointCombatMode "BLUE";
+_wp1 = (group _heli) addWaypoint [getMarkerPos "helim", 0];
 _projectile_pos = getPos _projectile;
+
 waitUntil 
-{
+	{	
 	sleep 1;
 	_dis = _heli distance _projectile_pos;
-	hint str _dis;
-	_heli distance _projectile_pos < 100;
-};
+	//hint str _dis;
+	_heli distance _projectile_pos < 150;
+	};
+	
+sleep 1.5;
 _para = createVehicle ["B_Parachute_02_F", [0,0,250], [], 0, ""];
 _para setPosATL (_heli modelToWorld[0,0,-10]);
 _veh = createVehicle ["B_supplyCrate_F", [0,0,40], [], 0, ""];
@@ -151,6 +155,6 @@ if (_ammo == "SmokeShellBlue" AND supply_ammo < max_supply_ammo) then {
 */
 
  //hubschrauber löschen 
-sleep 30;
+sleep 60;
 {_heli deleteVehicleCrew _x;} forEach (crew _heli);
 deleteVehicle _heli;
