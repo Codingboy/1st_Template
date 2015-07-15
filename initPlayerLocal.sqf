@@ -1,4 +1,8 @@
-sleep 10;
+while {backpack player == ""} do 
+	{
+		sleep 6;
+	};
+	
 removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "ACE_optic_Hamr_PIP";
 if ((typeOf player) == "first_Squadleader" OR (typeOf player) == "first_Teamleader") then {
