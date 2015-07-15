@@ -1,37 +1,37 @@
 _ammo = _this select 4;
 _projectile = _this select 6;
 
-if (_ammo == "SmokeShellYellow" AND supply_explosives < max_supply_explosives) then {
- supply_explosives = supply_explosives +1;
- publicVariable "supply_explosives";
- hint "Rucksackladungen angefordert";
- _heli = createVehicle ["RHS_UH1Y_d", getMarkerPos "helim", [], 0, "FLY"];
- createVehicleCrew _heli;
- sleep 5;
- _wp = (group _heli) addWaypoint [getPos _projectile, 0]; 
- _wp = (group _heli) addWaypoint [getMarkerPos "helim", 1]; 
- _projectile_pos = getPos _projectile;
- waitUntil 
-	{
+if (!((_ammo == "SmokeShellYellow" AND supply_explosives < max_supply_explosives) OR (_ammo == "SmokeShellRed" AND supply_medical < max_supply_medical) OR (_ammo == "SmokeShellBlue" AND supply_ammo < max_supply_ammo))) exitWith{};
+
+_heli = createVehicle ["RHS_UH1Y_d", getMarkerPos "helim", [], 0, "FLY"];
+createVehicleCrew _heli;
+sleep 5;
+_wp = (group _heli) addWaypoint [getPos _projectile, 0]; 
+_wp = (group _heli) addWaypoint [getMarkerPos "helim", 1]; 
+_projectile_pos = getPos _projectile;
+waitUntil 
+{
 	sleep 1;
 	_dis = _heli distance _projectile_pos;
 	hint str _dis;
 	_heli distance _projectile_pos < 100;
-	};
- _para = createVehicle ["B_Parachute_02_F", [0,0,250], [], 0, ""];
- _para setPosATL (_heli modelToWorld[0,0,-5]);
- _veh = createVehicle ["B_supplyCrate_F", [0,0,40], [], 0, ""];
- _veh attachTo [_para,[0,0,0]];
- _veh allowDamage false;
- ClearWeaponCargoGlobal _veh; 
- ClearMagazineCargoGlobal _veh; 
- ClearItemCargoGlobal _veh;
- ClearBackpackCargoGlobal _veh;
- _veh addItemCargoGlobal ["SatchelCharge_Remote_Mag",5];
- //hubschrauber löschen 
- sleep 30;
- {_heli deleteVehicleCrew _x;} forEach (crew _heli);
- deleteVehicle _heli;};
+};
+_para = createVehicle ["B_Parachute_02_F", [0,0,250], [], 0, ""];
+_para setPosATL (_heli modelToWorld[0,0,-5]);
+_veh = createVehicle ["B_supplyCrate_F", [0,0,40], [], 0, ""];
+_veh attachTo [_para,[0,0,0]];
+_veh allowDamage false;
+ClearWeaponCargoGlobal _veh; 
+ClearMagazineCargoGlobal _veh; 
+ClearItemCargoGlobal _veh;
+ClearBackpackCargoGlobal _veh;
+ 
+if (_ammo == "SmokeShellYellow" AND supply_explosives < max_supply_explosives) then {
+	supply_explosives = supply_explosives +1;
+	publicVariable "supply_explosives";
+	hint "Rucksackladungen angefordert";
+	_veh addItemCargoGlobal ["SatchelCharge_Remote_Mag",5];
+};
  
  
 /*
@@ -93,3 +93,8 @@ if (_ammo == "SmokeShellBlue" AND supply_ammo < max_supply_ammo) then {
  _veh addItemCargoGlobal ["SmokeShell",4];
  }; 
 */
+
+ //hubschrauber löschen 
+sleep 30;
+{_heli deleteVehicleCrew _x;} forEach (crew _heli);
+deleteVehicle _heli;
