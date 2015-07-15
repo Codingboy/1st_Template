@@ -35,5 +35,8 @@ if (isServer) then {
  }; 
  
  //ViewDistance fest einstellen. Wert bei Bedarf anpassen
- Com_ViewDistance = 1500;
- if (hasInterface) then {[Com_ViewDistance]execVM "kai\viewDistance.sqf";};
+  if (hasInterface) then 
+	{
+	Com_ViewDistance = 1500;
+	[Com_ViewDistance]execVM "Commander\viewDistance.sqf";
+	};
