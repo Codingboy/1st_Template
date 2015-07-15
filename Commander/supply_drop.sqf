@@ -7,15 +7,19 @@ if (_ammo == "SmokeShellYellow" AND supply_explosives < max_supply_explosives) t
  hint "Rucksackladungen angefordert";
  _heli = createVehicle ["RHS_UH1Y_d", getMarkerPos "helim", [], 0, "FLY"];
  createVehicleCrew _heli;
+ sleep 5;
  _wp = (group _heli) addWaypoint [getPos _projectile, 0]; 
  _wp = (group _heli) addWaypoint [getMarkerPos "helim", 1]; 
+ _projectile_pos = getPos _projectile;
  waitUntil 
-	{sleep 1;
-	_dis = _heli distance _projectile;
+	{
+	sleep 1;
+	_dis = _heli distance _projectile_pos;
 	hint str _dis;
-	_heli distance _projectile < 100;};
+	_heli distance _projectile_pos < 100;
+	};
  _para = createVehicle ["B_Parachute_02_F", [0,0,250], [], 0, ""];
- _para setPosATL (heli modelToWorld[0,0,-5]);
+ _para setPosATL (_heli modelToWorld[0,0,-5]);
  _veh = createVehicle ["B_supplyCrate_F", [0,0,40], [], 0, ""];
  _veh attachTo [_para,[0,0,0]];
  _veh allowDamage false;
