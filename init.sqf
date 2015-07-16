@@ -17,32 +17,30 @@ getTisTot = compile preprocessFileLineNumbers "scripts\trindisplay\functions\tri
 //Nachschub über Rauchgranaten und addAction für die Missionen
 if (hasInterface AND ((typeOf player) == "first_Squadleader" OR (typeOf player) == "first_Teamleader")) then {
 	player addEventHandler ["Fired", {_this execVM "commander\supply_drop.sqf"}];
-	};
+};
 
 if (isServer) then {
- supply_explosives = 0;
- supply_medical = 0;
- supply_ammo = 0;
- max_supply_explosives = 2;
- max_supply_medical = 4;
- max_supply_ammo = 4;
- publicVariable "supply_explosives";
- publicVariable "supply_medical";
- publicVariable "supply_ammo";
- publicVariable "max_supply_explosives";
- publicVariable "max_supply_medical";
- publicVariable "max_supply_ammo";
- }; 
+	supply_explosives = 0;
+	supply_medical = 0;
+	supply_ammo = 0;
+	max_supply_explosives = 2;
+	max_supply_medical = 4;
+	max_supply_ammo = 4;
+	publicVariable "supply_explosives";
+	publicVariable "supply_medical";
+	publicVariable "supply_ammo";
+	publicVariable "max_supply_explosives";
+	publicVariable "max_supply_medical";
+	publicVariable "max_supply_ammo";
+}; 
  
- //ViewDistance fest einstellen. Wert bei Bedarf anpassen
-  if (hasInterface) then 
-	{
+//ViewDistance fest einstellen. Wert bei Bedarf anpassen
+if (hasInterface) then 	{
 	Com_ViewDistance = 1500;
 	[Com_ViewDistance]execVM "Commander\viewDistance.sqf";
-	};
+};
 
-if (hasInterface) then
-{
+if (hasInterface) then {
 	['Preload'] call BIS_fnc_arsenal;
 	waitUntil {!isNull player};
 	player addRating 99999999;
