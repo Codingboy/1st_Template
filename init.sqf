@@ -40,3 +40,12 @@ if (isServer) then {
 	Com_ViewDistance = 1500;
 	[Com_ViewDistance]execVM "Commander\viewDistance.sqf";
 	};
+
+if (hasInterface) then
+{
+	['Preload'] call BIS_fnc_arsenal;
+	waitUntil {!isNull player};
+	player addRating 99999999;
+	[player, 25, 3000, 1.4, 0.32, 0.68, 0.00] execVM "scripts\trindisplay\diverstats.sqf";
+	player addMPEventHandler["MPRespawn", {player addRating 99999999;[player, 25, 3000, 1.4, 0.32, 0.68, 0.00] execVM "scripts\trindisplay\diverstats.sqf";}];
+};
