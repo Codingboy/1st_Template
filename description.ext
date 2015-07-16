@@ -16,6 +16,16 @@ respawnOnStart = 0;
 disabledAI = 1;
 //showMap = 0;
 enableDebugConsole = 1;
+
+/*Disablen von Channels
+Channel 0 = Global
+Channel 1 = Side
+Channel 2 = Command
+Channel 3 = Group
+Channel 4 = Vehicle
+Channel 5 = Direct
+Channel 6 = System
+*/
 disableChannels[] = {0,1,2,4,6};
 
 briefing = 0;
