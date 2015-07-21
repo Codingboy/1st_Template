@@ -35,6 +35,15 @@ if (isServer) then
 	publicVariable "max_supply_medical";
 	publicVariable "max_supply_ammo";
 	}; 
+	
+Com_fnc_sideChat = {
+	private "_text";
+	_text = _this select 0;
+	_firer = _this select 1;
+	if (_firer == "") then {_firer = [West,"HQ"];};
+	_firer sideChat _text;	
+	hint str _firer;
+	};
  
 //ViewDistance fest einstellen. Wert bei Bedarf anpassen
 if (hasInterface) then 	
